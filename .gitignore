@@ -1,7 +1,13 @@
+.idea
+.gradle
+
+
 #projects
 AdditionalBars
 AdditionalBarsBOP
 AdditionalBarsBYG
 
 #workspace
-workspace/libs
+workspace/libs/
+workspace/build/
+workspace/run/
