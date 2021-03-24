@@ -26,20 +26,6 @@ repositories {
         name 'curse maven'
         url "https://www.cursemaven.com"
     }
-    maven { url 'https://www.dogforce-games.com/maven/' }
-    maven { // TOP
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
-    }
-    maven {
-        url = "https://modmaven.k-4u.nl"
-    }
-    maven { // JEI
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-    maven { // Patchouli
-        url "https://maven.blamejared.com"
-    }
 }
 
 version = '1.0'
@@ -54,7 +40,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'snapshot', version: '20210309-1.16.5'
+    mappings channel: 'snapshot', version: project.mcp_mappings
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
     // accessTransformer = file('build/resources/main/META-INF/accesstransformer.cfg')
@@ -134,55 +120,21 @@ minecraft {
     }
 }
 
-repositories {
-    flatDir {
-        dirs "libs"
-    }
-}
+//repositories {
+//    flatDir {
+//        dirs "libs"
+//    }
+//}
 
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft "net.minecraftforge:forge:1.16.5-36.1.1"
-
-    //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-    //compile fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}") {
-        //transitive = false
-    //}
-    //compileOnly fg.deobf("com.glitchfiend.biomesoplenty:BiomesOPlenty:1.16.4-13.0.0.433-deobf")
-    //runtimeOnly fg.deobf("com.glitchfiend.biomesoplenty:BiomesOPlenty:1.16.4-13.0.0.433-deobf")
-    //compile fg.deobf("nl.elec332.core:eleccore:${minecraft_version}-2.1.47-Beta")
-
-//    compile fg.deobf("nl.elec332.core:ElecCore:${minecraft_version}-${eleccore_version}")
-//    compile fg.deobf("curse.maven:wildnature:2837635")
-//    compile fg.deobf("curse.maven:voxelmap:2765032")
-//    compile fg.deobf("curse.maven:minimap:2849263")
-//    compile fg.deobf("curse.maven:xaero:2836597")
-
-    //runtimeOnly fg.deobf('com.glitchfiend:BiomesOPlenty:13.0.0.433:universal')
-    //compile project(':RFToolsDimensions')
-
-    //compile fg.deobf('corgiaoc:byg:1.1.12')
+    minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
     compile project(':AdditionalBars')
     compile project(':AdditionalBarsBOP')
     compile project(':AdditionalBarsBYG')
-
-    // You may put jars on which you depend on in ./libs or you may define them like so..
-    // compile "some.group:artifact:version:classifier"
-    // compile "some.group:artifact:version"
-
-    // Real examples
-    // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // The 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    // provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-
-    // These dependencies get remapped to your current MCP mappings
-    // deobf 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

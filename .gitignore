@@ -8,6 +8,6 @@ AdditionalBarsBOP
 AdditionalBarsBYG
 
 #workspace
-workspace/libs/
-workspace/build/
-workspace/run/
+workspace/libs
+workspace/build
+workspace/run
